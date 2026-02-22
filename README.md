@@ -1,76 +1,29 @@
-# LangChain Basic LLM Tutorial
+# LangChain Basic LLM Tutorial - Juan Pablo Nieto Cortes
 
-This repository contains a simple implementation of a LangChain application as part of Lab 4. It demonstrates how to use `ChatOpenAI`, `ChatPromptTemplate`, and LCEL (LangChain Expression Language) to create a basic LLM chain.
+Este repositorio contiene la implementación básica de una cadena de LangChain, parte del Laboratorio 4 de AREP. Demuestra el uso de plantillas de prompts, modelos de chat y analizadores de salida.
 
-## Prerequisites
+## Arquitectura
 
-- Python 3.8+
-- OpenAI API Key
+La aplicación sigue el patrón LCEL (LangChain Expression Language):
+`PromptTemplate` -> `LLM (Groq/OpenAI)` -> `StrOutputParser`
 
-## Installation
+1.  **PromptTemplate**: Define la estructura del mensaje.
+2.  **LLM**: El cerebro que procesa el texto (usamos Groq por velocidad y costo cero).
+3.  **StrOutputParser**: Convierte la respuesta del modelo en un string limpio.
 
-1.  **Clone the repository** (if not already cloned):
-    ```bash
-    git clone <repository_url>
-    cd langchain-basic-llm
+## Instalación
+
+1.  **Clonar**: `git clone <repo_url>`
+2.  **Dependencias**: `pip install -r requirements.txt`
+3.  **Configuración**: Crea un `.env` con:
+    ```
+    GROQ_API_KEY=tu_api_key_aqui
     ```
 
-2.  **Create a virtual environment** (optional but recommended):
-    ```bash
-    python -m venv .venv
-    # Windows
-    .venv\Scripts\activate
-    # macOS/Linux
-    source .venv/bin/activate
-    ```
+## Ejecución
 
-3.  **Install dependencies**:
-    ```bash
-    pip install -r requirements.txt
-    ```
+-   **Script**: `python llm_free.py`
+-   **Libro Interactivo**: Abre `LIBRO_JUAN_PABLO.ipynb`
 
-4.  **Set up Environment Variables**:
-    Create a `.env` file in the root directory and add your OpenAI API Key:
-    ```
-    OPENAI_API_KEY=your_api_key_here
-    ```
-
-## Usage
-
-Run the tutorial script:
-
-```bash
-python llm_tutorial.py
-```
-
-You will be prompted to enter a question. The application will send your question to the LLM and print the response.
-
-### Sample Interaction
-
-```text
-Enter your question: What is LangChain?
-
-Response:
-LangChain is a framework designed to simplify the creation of applications using large language models (LLMs). It provides tools and abstractions to chain different components together, such as prompts, models, and output parsers.
-```
-
-### Interactive Notebook (The "Book")
-
-We have also provided a Jupyter Notebook that explains the steps in detail, like a book. To use it:
-
-1.  Ensure you have `notebook` installed (included in requirements).
-2.  Run:
-    ```bash
-    jupyter notebook tutorial.ipynb
-    ```
-
-
-## Architecture
-
-The application uses a simple LCEL chain:
-
-`PromptTemplate` -> `ChatOpenAI` -> `StrOutputParser`
-
--   **PromptTemplate**: Formats the user input into a message for the LLM.
--   **ChatOpenAI**: The LLM model (gpt-3.5-turbo).
--   **StrOutputParser**: Parses the output message content into a string.
+---
+Desarrollado por **Juan Pablo Nieto Cortes**.
